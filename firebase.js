@@ -69,6 +69,7 @@ async function pull() {
     holidays: datas.filter(item => item.tipo === 'FERIADO').map(item => ({
       id: item.id, date: item.data, name: item.nome, category: item.categoria || 'Outro'
     })),
+    openings: Object.fromEntries(datas.filter(item => item.tipo === 'FUNCIONAMENTO').map(item => [item.data, { mode: item.modo, stores: item.lojas_abertas || [] }])),
     schedule: [...groupedSchedule.values()],
     availability: Object.fromEntries(disponibilidades.map(item => [`${item.funcionario_id}|${item.data}`, item.disponivel])),
     monthStatus: Object.fromEntries(escalas.map(item => [item.id, item.status || 'Rascunho'])),
@@ -124,9 +125,14 @@ async function flush(snapshot) {
     funcionario_loja: (snapshot.employees || []).filter(item => item.store).map(item => ({
       id: `${item.id}_${item.store}_atual`, data: { funcionario_id: item.id, loja_id: item.store, tipo_vinculo: 'FIXO', ativo: true, data_inicio: null, data_fim: null }
     })),
-    datas_especiais: (snapshot.holidays || []).map(item => ({ id: item.id, data: {
-      data: item.date, tipo: 'FERIADO', nome: item.name, categoria: item.category || 'Outro', ativo: true
-    }})),
+    datas_especiais: [
+      ...(snapshot.holidays || []).map(item => ({ id: item.id, data: {
+        data: item.date, tipo: 'FERIADO', nome: item.name, categoria: item.category || 'Outro', ativo: true
+      }})),
+      ...Object.entries(snapshot.openings || {}).map(([date, item]) => ({ id: `func-${date}`, data: {
+        data: date, tipo: 'FUNCIONAMENTO', modo: item.mode, lojas_abertas: item.stores || [], ativo: true
+      }}))
+    ],
     disponibilidade_funcionario: Object.entries(snapshot.availability || {}).map(([key, available]) => {
       const [employeeId, date] = key.split('|');
       return { id: `${employeeId}_${date}`, data: { funcionario_id: employeeId, data: date, disponivel: available, observacao: '' } };

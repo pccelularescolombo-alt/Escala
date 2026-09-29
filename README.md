@@ -19,6 +19,13 @@ O painel é administrativo e não possui área de funcionários ou fluxo de soli
 - Os funcionários de lojas fechadas ficam livres e são realocados com prioridade para lojas abertas que faltarem equipe.
 - Lojas antigas, sem essa informação, são tratadas como abertas.
 
+## Funcionamento por data
+
+- Na aba Calendário, o cartão “Funcionamento das lojas” lista os domingos e feriados do mês.
+- Para cada data é possível manter o padrão das lojas, abrir escolhendo quais lojas ficam abertas, ou fechar todas as lojas.
+- A escala gerada e o ajuste manual respeitam essa definição. Depois de alterar uma data, gere a escala do mês novamente.
+- Fica salvo em `datas_especiais` com `tipo: FUNCIONAMENTO`.
+
 ## Estado inicial
 
 O sistema carrega vazio: sem lojas, funcionários, feriados ou escalas de exemplo. Cadastre tudo pelo painel.
