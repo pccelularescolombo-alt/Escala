@@ -81,7 +81,7 @@
     .people{display:flex;align-items:center;gap:8px;min-width:0}.avatars{display:flex}.avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:9px;font-weight:700;border:2px solid var(--surface);margin-left:-7px}.avatar:first-child{margin-left:0}.people-copy{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.people-copy span{display:block;color:var(--muted);font-size:10px;margin-top:2px}
     .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:10px;font-weight:700;background:var(--mint);color:var(--green)}.pill.holiday{background:var(--orange-soft);color:#a64225}.pill.pending{background:#fff0c9;color:#795c0e}.pill.blue{background:#dfeaf5;color:#315d8f}.pill.gray{background:#ecece7;color:#59615c}
     .activity{display:grid;gap:18px}.activity-item{display:grid;grid-template-columns:34px 1fr;gap:12px;position:relative}.activity-item:not(:last-child):after{content:'';position:absolute;width:1px;background:var(--line);left:16px;top:37px;bottom:-15px}.activity-icon{width:34px;height:34px;border-radius:11px;background:var(--mint);display:grid;place-items:center;color:var(--green);z-index:1}.activity-icon svg{width:15px}.activity-item:nth-child(2) .activity-icon{background:var(--orange-soft);color:#a64225}.activity-item:nth-child(3) .activity-icon{background:#dfeaf5;color:#315d8f}.activity-copy{font-size:12px;line-height:1.45}.activity-copy b{display:block}.activity-copy time{font-size:10px;color:var(--muted)}
-    .progress-wrap{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}.progress-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:8px}.progress{height:8px;background:#e9e8e1;border-radius:9px;overflow:hidden}.progress i{display:block;height:100%;width:82%;background:var(--green-2);border-radius:9px}
+    .progress-wrap{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}.progress-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:8px}.progress{height:8px;background:#e9e8e1;border-radius:9px;overflow:hidden}.progress i{display:block;height:100%;width:0%;background:var(--green-2);border-radius:9px}
     .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{height:37px;border:1px solid var(--line);background:var(--surface);border-radius:11px;padding:0 12px;color:var(--muted);font-size:12px}
     .table-card{overflow:hidden}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:700px}th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:1.1px;color:var(--muted);font-weight:700;padding:13px 18px;background:#f7f5ee;border-bottom:1px solid var(--line)}td{padding:14px 18px;border-bottom:1px solid #ebe9e1;font-size:12px}tr:last-child td{border-bottom:0}tbody tr:hover{background:#fbfaf5}.person-cell{display:flex;align-items:center;gap:11px}.person-avatar{width:34px;height:34px;border-radius:11px;background:var(--mint);color:var(--green);display:grid;place-items:center;font-weight:700;font-size:11px}.person-cell b{display:block}.person-cell small{color:var(--muted)}
     .action-menu{border:0;background:transparent;width:30px;height:30px;border-radius:8px}.action-menu:hover{background:var(--paper)}
@@ -150,14 +150,14 @@
         <div class="page-head"><div><p class="eyebrow">Visão geral</p><h1>Bom dia, sua escala está em ordem.</h1><p class="subtitle">Acompanhe a cobertura das lojas e prepare o próximo mês com equilíbrio.</p></div><div class="button-row"><button class="btn" data-action="export"><svg><use href="#i-download"/></svg>Exportar</button><button class="btn accent" data-page-jump="schedule"><svg><use href="#i-plus"/></svg>Montar escala</button></div></div>
         <div class="notice" id="persistenceNotice"><svg><use href="#i-info"/></svg><span id="persistenceMessage"><b>Conectando ao Firestore.</b> Os dados locais permanecem disponíveis durante a verificação.</span><button class="btn small" data-page-jump="settings">Ver configuração</button></div>
         <div class="stats">
-          <article class="stat"><div class="stat-top"><span>Funcionários ativos</span><span class="stat-icon"><svg><use href="#i-users"/></svg></span></div><div class="stat-value" id="statEmployees">24</div><div class="stat-foot"><span class="up">+2</span> neste mês</div></article>
-          <article class="stat"><div class="stat-top"><span>Lojas ativas</span><span class="stat-icon"><svg><use href="#i-store"/></svg></span></div><div class="stat-value" id="statStores">4</div><div class="stat-foot">Todas com equipe definida</div></article>
-          <article class="stat"><div class="stat-top"><span>Datas no mês</span><span class="stat-icon"><svg><use href="#i-calendar"/></svg></span></div><div class="stat-value">5</div><div class="stat-foot">4 domingos · 1 feriado</div></article>
-          <article class="stat"><div class="stat-top"><span>Cobertura</span><span class="stat-icon"><svg><use href="#i-check"/></svg></span></div><div class="stat-value">82%</div><div class="stat-foot"><span class="up">18 de 22</span> vagas preenchidas</div></article>
+          <article class="stat"><div class="stat-top"><span>Funcionários ativos</span><span class="stat-icon"><svg><use href="#i-users"/></svg></span></div><div class="stat-value" id="statEmployees">0</div><div class="stat-foot">cadastrados no sistema</div></article>
+          <article class="stat"><div class="stat-top"><span>Lojas ativas</span><span class="stat-icon"><svg><use href="#i-store"/></svg></span></div><div class="stat-value" id="statStores">0</div><div class="stat-foot">Nenhuma loja cadastrada</div></article>
+          <article class="stat"><div class="stat-top"><span>Datas no mês</span><span class="stat-icon"><svg><use href="#i-calendar"/></svg></span></div><div class="stat-value">0</div><div class="stat-foot">Sem datas no mês</div></article>
+          <article class="stat"><div class="stat-top"><span>Cobertura</span><span class="stat-icon"><svg><use href="#i-check"/></svg></span></div><div class="stat-value">0%</div><div class="stat-foot"><span class="up">0 de 0</span> vagas preenchidas</div></article>
         </div>
         <div class="grid-main">
           <article class="card"><div class="card-head"><div><h2 class="card-title">Próximas datas</h2><p class="card-sub">Cobertura consolidada de todas as lojas</p></div><div class="month-switcher"><button class="mini-btn prev-month" aria-label="Mês anterior" style="transform:rotate(180deg)"><svg><use href="#i-chevron"/></svg></button><strong class="monthLabel">Outubro 2026</strong><button class="mini-btn next-month" aria-label="Próximo mês"><svg><use href="#i-chevron"/></svg></button></div></div><div class="card-body"><div class="schedule-list" id="dashboardSchedule"></div></div></article>
-          <article class="card"><div class="card-head"><div><h2 class="card-title">Movimentações</h2><p class="card-sub">Atualizações administrativas</p></div><button class="btn ghost small" data-page-jump="schedule">Ver escala</button></div><div class="card-body"><div class="activity"><div class="activity-item"><div class="activity-icon"><svg><use href="#i-calendar"/></svg></div><div class="activity-copy"><b>Disponibilidade atualizada</b>Marcações de outubro foram revisadas.<br><time>Hoje, 09:42</time></div></div><div class="activity-item"><div class="activity-icon"><svg><use href="#i-check"/></svg></div><div class="activity-copy"><b>Escala atualizada</b>Cobertura da Loja Centro revisada.<br><time>Ontem, 16:18</time></div></div><div class="activity-item"><div class="activity-icon"><svg><use href="#i-users"/></svg></div><div class="activity-copy"><b>Funcionário cadastrado</b>Paulo foi adicionado à Loja Norte.<br><time>Ontem, 11:05</time></div></div></div><div class="progress-wrap"><div class="progress-label"><span>Preparação do mês</span><b>82%</b></div><div class="progress"><i></i></div></div></div></article>
+          <article class="card"><div class="card-head"><div><h2 class="card-title">Movimentações</h2><p class="card-sub">Atualizações administrativas</p></div><button class="btn ghost small" data-page-jump="schedule">Ver escala</button></div><div class="card-body"><div class="activity"><div class="activity-item"><div class="activity-icon"><svg><use href="#i-info"/></svg></div><div class="activity-copy"><b>Nenhuma movimentação</b>As atualizações aparecerão aqui.<br><time>—</time></div></div></div><div class="progress-wrap"><div class="progress-label"><span>Preparação do mês</span><b>0%</b></div><div class="progress"><i></i></div></div></div></article>
         </div>
       </section>
 
@@ -185,27 +185,7 @@
   <div class="toast" id="toast"><svg><use href="#i-check"/></svg><span id="toastText">Alteração salva.</span></div>
   <script>
     const seed = {
-      stores:[
-        {id:'s1',name:'Loja Centro',sunMin:2,holMin:2,active:true},
-        {id:'s2',name:'Loja Norte',sunMin:3,holMin:2,active:true},
-        {id:'s3',name:'Loja Shopping',sunMin:2,holMin:2,active:true},
-        {id:'s4',name:'Loja Sul',sunMin:2,holMin:1,active:true}
-      ],
-      employees:[
-        {id:'e1',name:'João Martins',role:'Vendedor(a)',store:'s1',sundays:2,active:true},
-        {id:'e2',name:'Maria Souza',role:'Caixa',store:'s1',sundays:1,active:true},
-        {id:'e3',name:'Carlos Lima',role:'Vendedor(a)',store:'s1',sundays:2,active:true},
-        {id:'e4',name:'Ana Ribeiro',role:'Gerente',store:'s2',sundays:1,active:true},
-        {id:'e5',name:'Pedro Alves',role:'Vendedor(a)',store:'s2',sundays:2,active:true},
-        {id:'e6',name:'Lucas Rocha',role:'Caixa',store:'s2',sundays:1,active:true},
-        {id:'e7',name:'Rafael Melo',role:'Vendedor(a)',store:'s2',sundays:2,active:true},
-        {id:'e8',name:'Mariana Costa',role:'Vendedor(a)',store:'s3',sundays:1,active:true},
-        {id:'e9',name:'Beatriz Reis',role:'Caixa',store:'s3',sundays:2,active:true},
-        {id:'e10',name:'Felipe Moraes',role:'Estoquista',store:'s3',sundays:1,active:true},
-        {id:'e11',name:'Camila Nunes',role:'Vendedor(a)',store:'s4',sundays:2,active:true},
-        {id:'e12',name:'Diego Santos',role:'Gerente',store:'s4',sundays:1,active:true}
-      ],
-      holidays:[{id:'h1',date:'2026-10-12',name:'Nossa Senhora Aparecida',category:'Nacional'}],
+      stores:[], employees:[], holidays:[],
       schedule:[], availability:{}, monthStatus:{}, logs:[]
     };
     const clone = obj => JSON.parse(JSON.stringify(obj));
@@ -222,7 +202,7 @@
       return data;
     }
     const Repository = {
-      key:'escala-central-demo-v1',
+      key:'escala-central-v1',
       load(){ try{return enforceRetention(JSON.parse(localStorage.getItem(this.key)) || clone(seed))}catch{return clone(seed)} },
       save(data){ enforceRetention(data);localStorage.setItem(this.key,JSON.stringify(data));window.firebaseBridge?.push(data) }
     };
@@ -347,7 +327,7 @@
     document.querySelector('#copyReport').addEventListener('click',async()=>{const text=[document.querySelector('#reportTitle').textContent,document.querySelector('#reportContent').innerText].join('\n\n').replace(/\n{3,}/g,'\n\n').trim();try{await navigator.clipboard.writeText(text);toast('Relatório copiado para a área de transferência.')}catch{const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();toast('Relatório copiado para a área de transferência.')}});
     window.addEventListener('firebase:data',event=>{state=enforceRetention({...state,...event.detail});state.availability??={};state.monthStatus??={};state.logs??=[];Repository.save(state);renderAll();toast('Dados carregados do Firestore.')});
     window.addEventListener('firebase:status',event=>{const {state:status,message}=event.detail,dot=document.querySelector('#syncDot'),text=document.querySelector('#syncText'),notice=document.querySelector('#persistenceNotice'),noticeText=document.querySelector('#persistenceMessage'),badge=document.querySelector('#firebaseBadge'),firebaseNotice=document.querySelector('#firebaseNotice'),firebaseText=document.querySelector('#firebaseNoticeText');dot.className=`sync-dot ${status}`;text.textContent=message;notice.classList.remove('connected','blocked');firebaseNotice.classList.remove('connected','blocked');if(status==='connected'){notice.classList.add('connected');firebaseNotice.classList.add('connected');noticeText.innerHTML='<b>Persistência ativa.</b> As alterações são sincronizadas com o Cloud Firestore.';badge.className='pill';badge.textContent='Conectado'}else if(status==='blocked'){notice.classList.add('blocked');firebaseNotice.classList.add('blocked');noticeText.innerHTML='<b>Firestore bloqueado.</b> As regras atuais não permitem leitura ou gravação; os dados estão apenas neste navegador.';badge.className='pill holiday';badge.textContent='Bloqueado'}else{badge.className='pill pending';badge.textContent='Conectando'}firebaseText.textContent=message});
-    if(!state.schedule.length)generateSchedule(true);renderAll();
+    if(!state.schedule.length&&state.stores.length&&state.employees.length)generateSchedule(true);renderAll();
   </script>
   <script type="module" src="./firebase.js"></script>
 </body>
