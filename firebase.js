@@ -59,7 +59,8 @@ async function pull() {
   const remote = {
     stores: lojas.map(item => ({
       id: item.id, name: item.nome, active: item.ativo !== false,
-      sunMin: Number(item.qtd_min_domingo || 0), holMin: Number(item.qtd_min_feriado || 0)
+      sunMin: Number(item.qtd_min_domingo || 0), holMin: Number(item.qtd_min_feriado || 0),
+      openSun: item.aberta_domingo !== false, openHol: item.aberta_feriado !== false
     })),
     employees: funcionarios.map(item => ({
       id: item.id, name: item.nome, role: item.cargo || '', active: item.ativo !== false,
@@ -113,7 +114,8 @@ async function flush(snapshot) {
   const payloads = {
     lojas: (snapshot.stores || []).map(item => ({ id: item.id, data: {
       nome: item.name, ativo: item.active !== false,
-      qtd_min_domingo: Number(item.sunMin || 0), qtd_min_feriado: Number(item.holMin || 0)
+      qtd_min_domingo: Number(item.sunMin || 0), qtd_min_feriado: Number(item.holMin || 0),
+      aberta_domingo: item.openSun !== false, aberta_feriado: item.openHol !== false
     }})),
     funcionarios: (snapshot.employees || []).map(item => ({ id: item.id, data: {
       nome: item.name, cargo: item.role || '', ativo: item.active !== false,

@@ -12,6 +12,13 @@ O painel é administrativo e não possui área de funcionários ou fluxo de soli
 - A recomendação não é obrigatória: na edição manual podem ser escolhidos funcionários de outras lojas.
 - Um funcionário não pode ser escalado em duas lojas na mesma data.
 
+## Lojas abertas ou fechadas
+
+- No cadastro da loja, informe se ela abre aos domingos e/ou nos feriados.
+- Se abre, informe o mínimo de funcionários; se está fechada, não gera escala naquela data.
+- Os funcionários de lojas fechadas ficam livres e são realocados com prioridade para lojas abertas que faltarem equipe.
+- Lojas antigas, sem essa informação, são tratadas como abertas.
+
 ## Estado inicial
 
 O sistema carrega vazio: sem lojas, funcionários, feriados ou escalas de exemplo. Cadastre tudo pelo painel.
