@@ -418,13 +418,12 @@
           const lines=own.map(r=>`${shortDate(r.date)} - ${r.employees.map(id=>employeeById(id)?.name).filter(Boolean).join(' / ')||'Sem equipe'}`);
           return {size,text:`${st.name}\n${lines.join('\n')}`};
         }).filter(Boolean);
-        return {small:perStore.filter(x=>x.size<=2),big:perStore.filter(x=>x.size>2)};
+        return {all:perStore,small:perStore.filter(x=>x.size<=2),big:perStore.filter(x=>x.size>2)};
       };
       const dom=groupsFor('DOMINGO'),fer=groupsFor('FERIADO'),out=[];
       const add=(title,list)=>{if(list.length)out.push(`${title}\n\n${list.map(x=>x.text).join('\n\n')}`)};
-      add(`Escala Domingo: ${month}`,dom.small);
+      add(`Escala Domingo: ${month}`,dom.all);
       add(`Escala Feriado: ${month} 1`,fer.small);
-      add(`Escala Domingo: ${month}`,dom.big);
       add(`Escala Feriado: ${month} 1`,fer.big);
       return out;
     }
