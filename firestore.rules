@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Site sem login: acesso público apenas às coleções utilizadas pelo sistema.
+    // Ative o Firebase App Check para reduzir requisições externas indevidas.
+    match /{collectionName}/{documentId} {
+      allow read, write: if collectionName in [
+        'lojas',
+        'funcionarios',
+        'funcionario_loja',
+        'datas_especiais',
+        'disponibilidade_funcionario',
+        'escalas',
+        'escala_funcionarios',
+        'historico_feriados',
+        'logs'
+      ];
+    }
+  }
+}
