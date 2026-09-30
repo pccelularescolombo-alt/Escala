@@ -19,12 +19,28 @@ O painel é administrativo e não possui área de funcionários ou fluxo de soli
 - Os funcionários de lojas fechadas ficam livres e são realocados com prioridade para lojas abertas que faltarem equipe.
 - Lojas antigas, sem essa informação, são tratadas como abertas.
 
+## Disponibilidade
+
+- A geração automática escala apenas quem está marcado como “Disponível” na data. “Indisponível” e “Não informado” não são escalados.
+- Ao gerar, se houver funcionários com “Não informado”, o sistema avisa antes de continuar.
+- A escala não é mais gerada sozinha ao abrir o sistema.
+
+## Funcionários fixos na escala
+
+- No cadastro da loja, “Funcionários fixos da loja na escala” define quantos fixos disponíveis são escalados. As vagas restantes vão primeiro para funcionários de lojas fechadas no dia, depois para os demais fixos da própria loja e, por último, para qualquer outro disponível.
+- Lojas sem esse valor preenchido (cadastradas antes) continuam preenchendo toda a equipe com fixos.
+
 ## Funcionamento por data
 
 - Na aba Calendário, o cartão “Funcionamento das lojas” lista os domingos e feriados do mês.
 - Para cada data é possível manter o padrão das lojas, abrir escolhendo quais lojas ficam abertas, ou fechar todas as lojas.
 - A escala gerada e o ajuste manual respeitam essa definição. Depois de alterar uma data, gere a escala do mês novamente.
 - Fica salvo em `datas_especiais` com `tipo: FUNCIONAMENTO`.
+
+## Ajuste manual
+
+- Na aba Escala, “Ajustar equipe” lista quem está escalado na data, agrupado por loja.
+- “Substituir” permite colocar alguém disponível no lugar ou trocar de lugar com quem está escalado em outra loja ou data. A troca é feita nas duas pontas.
 
 ## Estado inicial
 
