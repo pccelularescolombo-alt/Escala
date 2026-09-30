@@ -19,6 +19,12 @@ O painel é administrativo e não possui área de funcionários ou fluxo de soli
 - Os funcionários de lojas fechadas ficam livres e são realocados com prioridade para lojas abertas que faltarem equipe.
 - Lojas antigas, sem essa informação, são tratadas como abertas.
 
+## Relatórios
+
+- Escala do mês, Por loja (escolha a loja, ou todas, e copie no formato WhatsApp) e Histórico de feriados.
+- O histórico mostra quem trabalha em cada feriado e quem trabalhou no feriado anterior, destacando quem se repete.
+- Ao gerar a escala de um mês com feriado, o sistema informa quem trabalhou no feriado anterior. Por padrão essas pessoas ficam fora da escala do feriado, mas é opcional: basta marcá-las para permitir.
+
 ## Disponibilidade
 
 - A geração automática escala apenas quem está marcado como “Disponível” na data. “Indisponível” e “Não informado” não são escalados.

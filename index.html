@@ -203,7 +203,7 @@
 
       <section class="page" id="page-schedule"><div class="page-head"><div><p class="eyebrow">Operação mensal</p><h1>Escala <span class="monthLabel">Outubro 2026</span></h1><p class="subtitle">Distribuição por data e loja, considerando histórico e disponibilidade.</p></div><div class="button-row"><button class="btn" data-action="save-draft">Salvar rascunho</button><button class="btn accent" id="generateSchedule"><svg><use href="#i-grid"/></svg>Gerar automaticamente</button></div></div><div class="toolbar"><div class="month-switcher"><button class="mini-btn prev-month" style="transform:rotate(180deg)"><svg><use href="#i-chevron"/></svg></button><strong class="monthLabel">Outubro 2026</strong><button class="mini-btn next-month"><svg><use href="#i-chevron"/></svg></button></div><div class="button-row"><span class="pill pending status-line" id="scheduleStatus">Rascunho</span><button class="btn primary" data-action="publish"><svg><use href="#i-check"/></svg>Publicar</button></div></div><div id="scheduleBoard"></div></section>
 
-      <section class="page" id="page-reports"><div class="page-head"><div><p class="eyebrow">Análises</p><h1>Relatórios</h1><p class="subtitle">Consulte a distribuição por mês, loja, funcionário ou tipo de data.</p></div><button class="btn primary" data-report="month"><svg><use href="#i-download"/></svg>Relatório mensal</button></div><div class="report-grid"><article class="card report-card"><div class="report-icon"><svg><use href="#i-calendar"/></svg></div><div><h3>Escala do mês</h3><p>Visão completa por loja, com domingos, feriados e pessoas escaladas.</p><button class="btn small" data-report="month">Abrir relatório</button></div></article><article class="card report-card"><div class="report-icon"><svg><use href="#i-users"/></svg></div><div><h3>Por funcionário</h3><p>Histórico individual, quantidade de domingos e participação em feriados.</p><button class="btn small" data-report="employee">Abrir relatório</button></div></article><article class="card report-card"><div class="report-icon"><svg><use href="#i-store"/></svg></div><div><h3>Por loja</h3><p>Cobertura mensal e necessidades específicas de cada unidade.</p><button class="btn small" data-report="store">Abrir relatório</button></div></article><article class="card report-card"><div class="report-icon"><svg><use href="#i-chart"/></svg></div><div><h3>Equilíbrio da escala</h3><p>Compare a distribuição entre pessoas e encontre diferenças relevantes.</p><button class="btn small" data-report="balance">Abrir relatório</button></div></article><article class="card report-card"><div class="report-icon"><svg><use href="#i-calendar"/></svg></div><div><h3>Histórico de feriados</h3><p>Registros permanentes de quem trabalhou em cada feriado, mesmo após a retenção mensal.</p><button class="btn small" data-report="holidays">Abrir histórico</button></div></article></div></section>
+      <section class="page" id="page-reports"><div class="page-head"><div><p class="eyebrow">Análises</p><h1>Relatórios</h1><p class="subtitle">Consulte a escala do mês, a escala de cada loja e o histórico de feriados.</p></div><button class="btn primary" data-report="month"><svg><use href="#i-download"/></svg>Relatório mensal</button></div><div class="report-grid"><article class="card report-card"><div class="report-icon"><svg><use href="#i-calendar"/></svg></div><div><h3>Escala do mês</h3><p>Visão completa por loja, com domingos, feriados e pessoas escaladas.</p><button class="btn small" data-report="month">Abrir relatório</button></div></article><article class="card report-card"><div class="report-icon"><svg><use href="#i-store"/></svg></div><div><h3>Por loja</h3><p>Escolha a loja para gerar e copiar a escala dela no mês.</p><button class="btn small" data-report="store">Abrir relatório</button></div></article><article class="card report-card"><div class="report-icon"><svg><use href="#i-calendar"/></svg></div><div><h3>Histórico de feriados</h3><p>Registros permanentes de quem trabalhou em cada feriado, mesmo após a retenção mensal.</p><button class="btn small" data-report="holidays">Abrir histórico</button></div></article></div></section>
 
       <section class="page" id="page-settings"><div class="page-head"><div><p class="eyebrow">Sistema</p><h1>Configurações</h1><p class="subtitle">Parâmetros gerais do sistema.</p></div></div><div class="grid-main"><article class="card"><div class="card-head"><div><h2 class="card-title">Padrões da escala</h2><p class="card-sub">Usados ao criar um novo mês</p></div></div><div class="card-body"><div class="form-grid"><div class="field"><label>Mínimo aos domingos</label><input type="number" value="2"></div><div class="field"><label>Mínimo nos feriados</label><input type="number" value="2"></div><div class="field full"><button class="btn primary" data-action="settings">Salvar padrões</button></div></div></div></article></div></section>
     </main>
@@ -212,6 +212,7 @@
   <dialog id="storeDialog"><form method="dialog" id="storeForm"><div class="modal-head"><div><p class="eyebrow">Estrutura</p><h2 id="storeDialogTitle">Nova loja</h2></div><button class="modal-close" value="cancel">×</button></div><div class="modal-body"><input type="hidden" name="storeId" id="storeEditId"><div class="form-grid"><div class="field full"><label>Nome da loja</label><input name="name" required placeholder="Ex.: Loja Sul"></div><div class="field"><label>Abre aos domingos?</label><select name="openSun" id="openSun"><option value="1">Sim, abre</option><option value="0">Não, fechada</option></select></div><div class="field" id="sunMinField"><label>Mínimo de funcionários no domingo</label><input name="sunMin" type="number" min="1" value="2"></div><div class="field"><label>Abre nos feriados?</label><select name="openHol" id="openHol"><option value="1">Sim, abre</option><option value="0">Não, fechada</option></select></div><div class="field" id="holMinField"><label>Mínimo de funcionários no feriado</label><input name="holMin" type="number" min="1" value="2"></div><div class="field full" id="fixedMinField" style="grid-column:1/-1"><label>Funcionários fixos da loja na escala</label><input name="fixedMin" type="number" min="0" value="1"><small style="color:var(--muted);font-size:11px;margin-top:4px;display:block">Quantos funcionários fixos desta loja (e disponíveis na data) o sistema escala. As vagas restantes são preenchidas primeiro por funcionários de lojas fechadas.</small></div><p class="subtitle full" id="closedHint" style="grid-column:1/-1;margin:0;display:none">Quando a loja está fechada, os funcionários dela ficam livres e são realocados automaticamente para as lojas abertas que precisarem de reforço.</p></div></div><div class="modal-foot"><button class="btn" value="cancel">Cancelar</button><button class="btn primary" value="default" id="storeSubmit">Cadastrar loja</button></div></form></dialog>
   <dialog id="storeTeamDialog"><form method="dialog" id="storeTeamForm"><div class="modal-head"><div><p class="eyebrow">Equipe fixa</p><h2 id="storeTeamTitle">Funcionários da loja</h2></div><button class="modal-close" value="cancel">×</button></div><div class="modal-body"><input type="hidden" name="storeId" id="storeTeamId"><p class="subtitle" style="margin-bottom:15px">Os marcados serão considerados fixos desta loja e terão prioridade nas recomendações.</p><div class="check-list" id="storeTeamEmployees"></div></div><div class="modal-foot"><button class="btn" value="cancel">Cancelar</button><button class="btn primary" value="default">Salvar equipe fixa</button></div></form></dialog>
   <dialog id="openingDialog"><form method="dialog" id="openingForm"><div class="modal-head"><div><p class="eyebrow">Calendário</p><h2 id="openingTitle">Funcionamento</h2></div><button class="modal-close" value="cancel">×</button></div><div class="modal-body"><input type="hidden" id="openingDate"><p class="subtitle" id="openingSub" style="margin:0 0 14px"></p><label class="op-opt"><input type="radio" name="mode" value="default"><span><b>Padrão das lojas</b><small>Segue o que foi definido no cadastro de cada loja.</small></span></label><label class="op-opt"><input type="radio" name="mode" value="open"><span><b>Abrir</b><small>Escolha abaixo quais lojas ficam abertas nesta data.</small></span></label><label class="op-opt"><input type="radio" name="mode" value="closed"><span><b>Fechar todas as lojas</b><small>Ninguém é escalado nesta data.</small></span></label><div class="field" id="openingStoresBox" style="margin-top:14px"><label>Lojas abertas nesta data</label><div class="check-list" id="openingStores"></div></div></div><div class="modal-foot"><button class="btn" value="cancel">Cancelar</button><button class="btn primary" value="default">Salvar</button></div></form></dialog>
+  <dialog id="holidayRepeatDialog"><form method="dialog" id="holidayRepeatForm"><div class="modal-head"><div><p class="eyebrow">Feriado anterior</p><h2 id="hrTitle">Quem já trabalhou</h2></div><button class="modal-close" value="cancel">×</button></div><div class="modal-body"><p class="subtitle" id="hrText" style="margin:0 0 12px"></p><div class="check-list" id="hrList"></div></div><div class="modal-foot"><button class="btn" value="cancel">Cancelar</button><button class="btn primary" value="default">Gerar escala</button></div></form></dialog>
   <dialog id="manualDialog" style="width:min(680px,calc(100vw - 28px))"><form method="dialog" id="manualForm"><div class="modal-head"><div><p class="eyebrow">Ajuste manual</p><h2 id="manualTitle">Ajustar equipe</h2></div><button class="modal-close" value="cancel">×</button></div><div class="modal-body"><input type="hidden" id="manualScheduleId"><p class="subtitle" id="manualSubtitle" style="margin:0 0 12px">Toque em “Substituir” na pessoa que precisa sair.</p><div class="mp-list" id="manualList"></div></div><div class="modal-foot"><button class="btn primary" value="cancel">Concluir</button></div></form></dialog>
   <dialog id="reportDialog"><div class="modal-head"><div><p class="eyebrow">Relatório</p><h2 id="reportTitle">Escala do mês</h2></div><button class="modal-close" onclick="this.closest('dialog').close()">×</button></div><div class="modal-body" id="reportContent"></div><div class="modal-foot"><button class="btn" onclick="this.closest('dialog').close()">Fechar</button><button class="btn" id="copyReport"><svg><use href="#i-clipboard"/></svg>Copiar relatório</button><button class="btn primary" id="printReport"><svg><use href="#i-download"/></svg>Imprimir</button></div></dialog>
   <div class="toast" id="toast"><svg><use href="#i-check"/></svg><span id="toastText">Alteração salva.</span></div>
@@ -272,7 +273,8 @@
     const storeById=id=>state.stores.find(s=>s.id===id);
     const employeeById=id=>state.employees.find(e=>e.id===id);
     const sundaysFor=(year,month)=>{const out=[];const d=new Date(year,month,1);while(d.getMonth()===month){if(d.getDay()===0)out.push(new Date(d));d.setDate(d.getDate()+1)}return out};
-    function generateSchedule(silent=false){
+    function generateSchedule(silent=false,opts={}){
+      const allow=opts.allow||new Set();
       const year=viewDate.getFullYear(),month=viewDate.getMonth();
       const dates=sundaysFor(year,month).map(d=>({date:`${year}-${String(month+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`,type:'DOMINGO'}));
       state.holidays.filter(h=>h.category!=='Facultativo'&&h.date.startsWith(`${year}-${String(month+1).padStart(2,'0')}`)).forEach(h=>dates.push({date:h.date,type:'FERIADO'}));
@@ -281,11 +283,15 @@
       state.schedule=state.schedule.filter(x=>!x.date.startsWith(monthKey));
       const usage={},assignedByDate={};state.employees.forEach(e=>usage[e.id]=e.sundays||0);
       dates.forEach(special=>{
-        const assignedToday=(assignedByDate[special.date]??=new Set()),dayRows=[];
+        const assignedToday=(assignedByDate[special.date]??=new Set()),dayRows=[],blocked=new Set();
+        if(special.type==='FERIADO'){
+          const prevDate=[...new Set(state.schedule.filter(r=>r.type==='FERIADO'&&r.date<special.date).map(r=>r.date))].sort().pop();
+          if(prevDate)state.schedule.filter(r=>r.type==='FERIADO'&&r.date===prevDate).forEach(r=>r.employees.forEach(id=>{if(!allow.has(id))blocked.add(id)}));
+        }
         state.stores.filter(s=>s.active&&storeOpenOn(s,special.date,special.type)).forEach(store=>{
           const count=special.type==='FERIADO'?store.holMin:store.sunMin;
           const fixedTarget=store.fixedMin==null?count:Math.min(Number(store.fixedMin)||0,count);
-          const fixedPool=state.employees.filter(e=>e.active&&e.store===store.id&&!assignedToday.has(e.id)&&state.availability[`${e.id}|${special.date}`]===true).sort((a,b)=>{
+          const fixedPool=state.employees.filter(e=>e.active&&e.store===store.id&&!assignedToday.has(e.id)&&!blocked.has(e.id)&&state.availability[`${e.id}|${special.date}`]===true).sort((a,b)=>{
             const availableA=state.availability[`${a.id}|${special.date}`]===true?0:1,availableB=state.availability[`${b.id}|${special.date}`]===true?0:1;
             return (availableA-availableB)||(usage[a.id]-usage[b.id])||a.name.localeCompare(b.name)
           });
@@ -295,7 +301,7 @@
         });
         const fill=filter=>dayRows.forEach(row=>{
           const missing=row.target-row.employees.length;if(missing<=0)return;
-          state.employees.filter(e=>e.active&&!assignedToday.has(e.id)&&state.availability[`${e.id}|${special.date}`]===true&&filter(e,row)).sort((a,b)=>{
+          state.employees.filter(e=>e.active&&!assignedToday.has(e.id)&&!blocked.has(e.id)&&state.availability[`${e.id}|${special.date}`]===true&&filter(e,row)).sort((a,b)=>{
             const av=x=>state.availability[`${x.id}|${special.date}`]===true?0:1;
             return (av(a)-av(b))||(usage[a.id]-usage[b.id])||a.name.localeCompare(b.name)
           }).slice(0,missing).forEach(person=>{row.employees.push(person.id);assignedToday.add(person.id);usage[person.id]=(usage[person.id]||0)+1});
@@ -419,11 +425,12 @@
       host.innerHTML=Object.entries(grouped).sort().map(([date,items])=>`<article class="card" style="margin-bottom:14px"><div class="card-head"><div><h2 class="card-title">${fmtDate(date)}</h2><p class="card-sub">${items[0].type==='FERIADO'?'Feriado':'Domingo'} · ${items.reduce((n,x)=>n+x.employees.length,0)} pessoas</p></div><div style="display:flex;align-items:center;gap:10px"><span class="pill ${items[0].type==='FERIADO'?'holiday':''}">${items[0].type==='FERIADO'?'Feriado':'Domingo'}</span><button class="btn small" data-manual-date="${esc(date)}">Ajustar equipe</button></div></div><div class="table-wrap"><table class="stack"><thead><tr><th>Loja</th><th>Equipe escalada</th><th>Cobertura</th><th>Origem</th></tr></thead><tbody>${items.map(item=>{const store=storeById(item.store);return `<tr><td data-label="Loja"><b>${esc(store?.name)}</b></td><td data-label="Equipe">${item.employees.map(id=>{const person=employeeById(id);return person?`${esc(person.name)}${person.store!==item.store?' <small>(apoio)</small>':''}`:''}).filter(Boolean).join(' · ')||'<span style="color:var(--orange)">Sem equipe suficiente</span>'}</td><td data-label="Cobertura"><span class="pill">${item.employees.length} / ${item.type==='FERIADO'?Number(store?.holMin)||0:Number(store?.sunMin)||0}</span></td><td data-label="Origem"><span class="pill ${item.origin==='MANUAL'?'blue':'gray'}">${item.origin==='MANUAL'?'Manual':'Automática'}</span></td></tr>`}).join('')}</tbody></table></div></article>`).join('');
     }
     let reportBlocks=[];
-    function whatsappBlocks(key){
+    function whatsappBlocks(key,onlyStore){
       const month=names[Number(key.slice(5,7))-1],rows=state.schedule.filter(x=>x.date.startsWith(key));
       const shortDate=d=>`${d.slice(8)}/${d.slice(5,7)}`;
       const groupsFor=type=>{
         const perStore=state.stores.map(st=>{
+          if(onlyStore&&onlyStore!=='__all'&&st.id!==onlyStore)return null;
           const own=rows.filter(r=>r.type===type&&r.store===st.id).sort((a,b)=>a.date.localeCompare(b.date));
           if(!own.length)return null;
           const size=Math.max(0,...own.map(r=>r.employees.filter(id=>employeeById(id)).length))||Number(type==='FERIADO'?st.holMin:st.sunMin)||0;
@@ -439,15 +446,30 @@
       add(`Escala Feriado: ${month} 1`,fer.big);
       return out;
     }
-    function buildReport(type){
-      const key=`${viewDate.getFullYear()}-${String(viewDate.getMonth()+1).padStart(2,'0')}`,rows=state.schedule.filter(x=>x.date.startsWith(key)),title={month:'Escala do mês',employee:'Distribuição por funcionário',store:'Cobertura por loja',balance:'Equilíbrio da escala',holidays:'Histórico de feriados'}[type];document.querySelector('#reportTitle').textContent=title;reportBlocks=[];
+    let reportStore='',reportType='';
+    function buildReport(type,keep){
+      reportType=type;if(type==='store'&&!keep)reportStore='';
+      const key=`${viewDate.getFullYear()}-${String(viewDate.getMonth()+1).padStart(2,'0')}`,rows=state.schedule.filter(x=>x.date.startsWith(key)),title={month:'Escala do mês',store:'Escala por loja',holidays:'Histórico de feriados'}[type];document.querySelector('#reportTitle').textContent=title;reportBlocks=[];
       let sections='';
-      if(type==='month'){reportBlocks=whatsappBlocks(key);sections=reportBlocks.length?`<p class="subtitle" style="margin:0 0 12px">Formato pronto para WhatsApp. Cada bloco pode ser copiado separadamente.</p>${reportBlocks.map((b,i)=>`<div class="report-section" style="position:relative"><button type="button" class="btn small" data-copy-block="${i}" style="position:absolute;top:0;right:0">Copiar</button><pre style="white-space:pre-wrap;font:inherit;font-size:13px;line-height:1.55;margin:0;padding-right:78px">${esc(b)}</pre></div>`).join('')}`:'<p class="subtitle">Sem escala gerada para este mês.</p>'}
-      if(type==='employee'||type==='balance')sections=`<div class="report-section"><h4>Participações no mês</h4>${state.employees.filter(e=>e.active).map(e=>{const total=rows.filter(r=>r.employees.includes(e.id)).length;return `<div class="report-line"><b>${esc(e.name)}</b><span>${total} ${total===1?'data':'datas'} · ${esc(storeById(e.store)?.name)}</span></div>`}).join('')}</div>`;
-      if(type==='store')sections=`<div class="report-section"><h4>Cobertura consolidada</h4>${state.stores.map(s=>{const own=rows.filter(r=>r.store===s.id),filled=own.reduce((n,r)=>n+r.employees.length,0),need=own.reduce((n,r)=>n+(r.type==='FERIADO'?s.holMin:s.sunMin),0);return `<div class="report-line"><b>${esc(s.name)}</b><span>${filled} de ${need} vagas preenchidas</span></div>`}).join('')}</div>`;
-      if(type==='holidays'){const holidayRows=state.schedule.filter(r=>r.type==='FERIADO').sort((a,b)=>b.date.localeCompare(a.date));sections=`<div class="report-section"><h4>Participações preservadas</h4>${holidayRows.map(r=>`<div class="report-line"><b>${fmtDate(r.date)} · ${esc(storeById(r.store)?.name||'Loja')}</b><span>${r.employees.map(id=>esc(employeeById(id)?.name)).filter(Boolean).join(', ')||'Sem equipe'}</span></div>`).join('')||'<p class="subtitle">Nenhum feriado registrado.</p>'}</div>`}
-      document.querySelector('#reportContent').innerHTML=`<div class="report-sheet"><div class="report-sheet-head"><h3>${title}</h3><p>${type==='holidays'?'Histórico permanente':`${names[viewDate.getMonth()]} de ${viewDate.getFullYear()} · gerado a partir da escala atual`}</p></div>${sections}</div>`;document.querySelector('#reportDialog').showModal();
+      const blocksHtml=()=>reportBlocks.map((b,i)=>`<div class="report-section" style="position:relative"><button type="button" class="btn small" data-copy-block="${i}" style="position:absolute;top:0;right:0">Copiar</button><pre style="white-space:pre-wrap;font:inherit;font-size:13px;line-height:1.55;margin:0;padding-right:78px">${esc(b)}</pre></div>`).join('');
+      if(type==='month'){reportBlocks=whatsappBlocks(key);sections=reportBlocks.length?`<p class="subtitle" style="margin:0 0 12px">Formato pronto para WhatsApp. Cada bloco pode ser copiado separadamente.</p>${blocksHtml()}`:'<p class="subtitle">Sem escala gerada para este mês.</p>'}
+            if(type==='store'){
+        reportBlocks=reportStore?whatsappBlocks(key,reportStore):[];
+        const picked=state.stores.filter(x=>reportStore==='__all'||x.id===reportStore),cover=picked.map(x=>{const own=rows.filter(r=>r.store===x.id),filled=own.reduce((n,r)=>n+r.employees.length,0),need=own.reduce((n,r)=>n+(r.type==='FERIADO'?x.holMin:x.sunMin),0);return `<div class="report-line"><b>${esc(x.name)}</b><span>${filled} de ${need} vagas preenchidas</span></div>`}).join('');
+        sections=`<div class="field" style="margin-bottom:14px"><label>Qual loja você quer no relatório?</label><select id="reportStoreSelect"><option value="">Escolha a loja…</option><option value="__all" ${reportStore==='__all'?'selected':''}>Todas as lojas</option>${state.stores.map(x=>`<option value="${esc(x.id)}" ${reportStore===x.id?'selected':''}>${esc(x.name)}</option>`).join('')}</select></div>`+(!reportStore?'<p class="subtitle">Selecione uma loja para gerar o relatório e copiar.</p>':reportBlocks.length?`<div class="report-section"><h4>Cobertura</h4>${cover}</div>${blocksHtml()}`:'<p class="subtitle">Esta loja não tem escala gerada neste mês.</p>');
+      }
+      if(type==='holidays'){
+        const hrows=state.schedule.filter(r=>r.type==='FERIADO'),dates=[...new Set(hrows.map(r=>r.date))].sort();
+        const nameOf=d=>state.holidays.find(h=>h.date===d)?.name||'Feriado';
+        const teamOf=d=>hrows.filter(r=>r.date===d).map(r=>({store:storeById(r.store)?.name||'Loja',ids:r.employees.filter(id=>employeeById(id))}));
+        const lines=d=>teamOf(d).map(t=>`<div class="report-line"><b>${esc(t.store)}</b><span>${t.ids.map(id=>esc(employeeById(id).name)).join(', ')||'Sem equipe'}</span></div>`).join('')||'<p class="subtitle">Sem equipe registrada.</p>';
+        sections=dates.length?[...dates].reverse().map(d=>{
+          const prev=dates[dates.indexOf(d)-1],nowIds=new Set(teamOf(d).flatMap(t=>t.ids)),repeated=prev?[...new Set(teamOf(prev).flatMap(t=>t.ids))].filter(id=>nowIds.has(id)):[];
+          return `<div class="report-section"><h4>${fmtDate(d)} · ${esc(nameOf(d))}</h4><p class="subtitle" style="margin:0 0 4px;font-weight:700">Trabalha neste feriado</p>${lines(d)}${prev?`<p class="subtitle" style="margin:12px 0 4px;font-weight:700">Feriado anterior · ${fmtDate(prev)} · ${esc(nameOf(prev))}</p>${lines(prev)}${repeated.length?`<div class="report-line"><b>Repetem do anterior</b><span>${repeated.map(id=>esc(employeeById(id).name)).join(', ')}</span></div>`:''}`:'<p class="subtitle" style="margin:12px 0 0">Sem feriado anterior registrado.</p>'}</div>`}).join(''):'<p class="subtitle">Nenhum feriado registrado.</p>';
+      }
+      document.querySelector('#reportContent').innerHTML=`<div class="report-sheet"><div class="report-sheet-head"><h3>${title}</h3><p>${type==='holidays'?'Histórico permanente':`${names[viewDate.getMonth()]} de ${viewDate.getFullYear()} · gerado a partir da escala atual`}</p></div>${sections}</div>`;const dlg=document.querySelector('#reportDialog');if(!dlg.open)dlg.showModal();
     }
+    document.querySelector('#reportContent').addEventListener('change',e=>{if(e.target.id==='reportStoreSelect'){reportStore=e.target.value;buildReport('store',true)}});
     function renderOpenings(){
       const y=viewDate.getFullYear(),m=viewDate.getMonth(),active=state.stores.filter(x=>x.active),holName=d=>state.holidays.find(h=>h.date===d)?.name;
       document.querySelector('#openingList').innerHTML=specialDatesFor(y,m).map(d=>{
@@ -511,7 +533,29 @@
         const names6=pend.slice(0,6).map(e=>e.name).join(', ')+(pend.length>6?` e mais ${pend.length-6}`:'');
         if(!confirm(`${pend.length} funcionário(s) estão com “Não informado” em alguma data: ${names6}.\n\nQuem está “Não informado” não é escalado nessa data. Só entram na escala os marcados como “Disponível”.\n\nGerar a escala mesmo assim?`))return;
       }
-      generateSchedule();
+      const cand=holidayRepeatCandidate();
+      if(cand)openHolidayRepeat(cand);else generateSchedule();
+    });
+    function holidayRepeatCandidate(){
+      const y=viewDate.getFullYear(),m=viewDate.getMonth(),key=`${y}-${String(m+1).padStart(2,'0')}`;
+      const first=specialDatesFor(y,m).find(d=>d.type==='FERIADO');if(!first)return null;
+      const hist=state.schedule.filter(r=>r.type==='FERIADO'&&!r.date.startsWith(key)&&r.date<first.date);
+      const prev=[...new Set(hist.map(r=>r.date))].sort().pop();if(!prev)return null;
+      const ids=[...new Set(hist.filter(r=>r.date===prev).flatMap(r=>r.employees))].filter(id=>employeeById(id)?.active);
+      return ids.length?{holiday:first.date,prev,ids}:null;
+    }
+    function openHolidayRepeat(c){
+      const nameOf=d=>state.holidays.find(h=>h.date===d)?.name||'Feriado';
+      document.querySelector('#hrTitle').textContent=`Trabalharam em ${fmtDate(c.prev).slice(0,5)} · ${nameOf(c.prev)}`;
+      document.querySelector('#hrText').textContent=`Estes funcionários trabalharam no feriado anterior. Por padrão eles ficam fora da escala do feriado de ${fmtDate(c.holiday).slice(0,5)} (${nameOf(c.holiday)}), mas é opcional: marque quem você quer permitir na escala.`;
+      document.querySelector('#hrList').innerHTML=c.ids.map(id=>{const e=employeeById(id);return `<label class="check-person"><input type="checkbox" value="${esc(id)}"><b>${esc(e.name)}</b><small style="color:var(--muted);margin-left:auto">${esc(storeById(e.store)?.name||'Sem loja')}</small></label>`}).join('');
+      document.querySelector('#holidayRepeatDialog').showModal();
+    }
+    document.querySelector('#holidayRepeatForm').addEventListener('submit',e=>{
+      if(e.submitter?.value==='cancel')return;
+      e.preventDefault();
+      const allow=new Set([...document.querySelectorAll('#hrList input:checked')].map(i=>i.value));
+      e.currentTarget.closest('dialog').close();generateSchedule(false,{allow});
     });
     document.querySelector('#employeeSearch').addEventListener('input',renderEmployees);document.querySelector('#storeFilter').addEventListener('change',renderEmployees);
     document.querySelector('#globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){navigate('employees');document.querySelector('#employeeSearch').value=e.target.value;renderEmployees()}});
@@ -594,7 +638,7 @@
     document.querySelector('#printReport').addEventListener('click',()=>window.print());
     async function copyText(text,msg){try{await navigator.clipboard.writeText(text);toast(msg)}catch{const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();toast(msg)}}
     document.querySelector('#reportContent').addEventListener('click',e=>{const b=e.target.closest('[data-copy-block]');if(b)copyText(reportBlocks[Number(b.dataset.copyBlock)],'Bloco copiado.')});
-    document.querySelector('#copyReport').addEventListener('click',async()=>{if(reportBlocks.length){copyText(reportBlocks.join('\n\n'),'Relatório copiado para a área de transferência.');return}const text=[document.querySelector('#reportTitle').textContent,document.querySelector('#reportContent').innerText].join('\n\n').replace(/\n{3,}/g,'\n\n').trim();try{await navigator.clipboard.writeText(text);toast('Relatório copiado para a área de transferência.')}catch{const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();toast('Relatório copiado para a área de transferência.')}});
+    document.querySelector('#copyReport').addEventListener('click',async()=>{if(reportType==='store'&&!reportBlocks.length){toast('Escolha uma loja com escala para copiar.');return}if(reportBlocks.length){copyText(reportBlocks.join('\n\n'),'Relatório copiado para a área de transferência.');return}const text=[document.querySelector('#reportTitle').textContent,document.querySelector('#reportContent').innerText].join('\n\n').replace(/\n{3,}/g,'\n\n').trim();try{await navigator.clipboard.writeText(text);toast('Relatório copiado para a área de transferência.')}catch{const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();toast('Relatório copiado para a área de transferência.')}});
     window.addEventListener('firebase:data',event=>{state=enforceRetention({...state,...event.detail});state.availability??={};state.openings??={};state.monthStatus??={};state.logs??=[];syncHolidays(viewDate.getFullYear());Repository.save(state);renderAll();toast('Dados carregados do Firestore.')});
     syncHolidays(viewDate.getFullYear());renderAll();
   </script>
