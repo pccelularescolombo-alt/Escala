@@ -27,6 +27,7 @@ O painel é administrativo e não possui área de funcionários ou fluxo de soli
 
 ## Disponibilidade
 
+- Os funcionários são agrupados por loja, em caixas com o nome da loja e o status (“Todos informados” ou quantos faltam), para conferir quais lojas já responderam. Os cargos usados são Gerente, Encarregado, Caixa e Vendedor.
 - A geração automática escala apenas quem está marcado como “Disponível” na data. “Indisponível” e “Não informado” não são escalados.
 - Ao gerar, se houver funcionários com “Não informado”, o sistema avisa antes de continuar.
 - A escala não é mais gerada sozinha ao abrir o sistema.
