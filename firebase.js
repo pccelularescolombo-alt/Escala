@@ -58,7 +58,7 @@ async function pull() {
 
   const remote = {
     stores: lojas.map(item => ({
-      id: item.id, name: item.nome, active: item.ativo !== false,
+      id: item.id, name: item.nome, active: item.ativo !== false, city: item.cidade || '',
       sunMin: Number(item.qtd_min_domingo || 0), holMin: Number(item.qtd_min_feriado || 0),
       openSun: item.aberta_domingo !== false, openHol: item.aberta_feriado !== false,
       fixedMin: item.qtd_fixos_escala ?? null
@@ -115,7 +115,7 @@ async function flush(snapshot) {
 
   const payloads = {
     lojas: (snapshot.stores || []).map(item => ({ id: item.id, data: {
-      nome: item.name, ativo: item.active !== false,
+      nome: item.name, ativo: item.active !== false, cidade: item.city || '',
       qtd_min_domingo: Number(item.sunMin || 0), qtd_min_feriado: Number(item.holMin || 0),
       aberta_domingo: item.openSun !== false, aberta_feriado: item.openHol !== false,
       qtd_fixos_escala: item.fixedMin ?? null
