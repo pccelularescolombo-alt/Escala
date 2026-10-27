@@ -19,6 +19,16 @@ O painel é administrativo e não possui área de funcionários ou fluxo de soli
 - Os funcionários de lojas fechadas ficam livres e são realocados com prioridade para lojas abertas que faltarem equipe.
 - Lojas antigas, sem essa informação, são tratadas como abertas.
 
+## Região da loja e tipos de feriado
+
+- No cadastro da loja informe **Estado** e **Cidade**. O próprio formulário lista quais feriados valem para aquela loja.
+- **Nacionais:** valem para todas as lojas.
+- **Estadual (Paraná, 19/12):** só para lojas do Paraná. Lojas de “Outro estado” ficam fechadas nessa data por padrão.
+- **Municipais:** só para as lojas da cidade (ver seção Feriados municipais).
+- **Pontos facultativos (Carnaval, Quarta de Cinzas, Corpus Christi):** cada loja define se escala como feriado ou trata como dia normal. Em Funcionamento das lojas é possível escalar lojas específicas em uma data, mesmo que o padrão da loja seja não escalar.
+- Na Disponibilidade, as colunas de feriado restrito (municipal, estadual ou facultativo) só pedem resposta dos funcionários das lojas que abrem naquela data; os demais aparecem com “—”.
+- Lojas antigas sem esses campos são tratadas como Paraná e sem escala em facultativos.
+
 ## Feriados municipais
 
 - No cadastro da loja, escolha a **Cidade** (Colombo, Pinhais, São José dos Pinhais ou Curitiba). Se o nome da loja contiver a cidade, ela é reconhecida sozinha.

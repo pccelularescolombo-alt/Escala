@@ -61,6 +61,7 @@ async function pull() {
       id: item.id, name: item.nome, active: item.ativo !== false, city: item.cidade || '',
       sunMin: Number(item.qtd_min_domingo || 0), holMin: Number(item.qtd_min_feriado || 0),
       openSun: item.aberta_domingo !== false, openHol: item.aberta_feriado !== false,
+      uf: item.uf ?? 'PR', openFac: item.aberta_facultativo === true,
       fixedMin: item.qtd_fixos_escala ?? null
     })),
     employees: funcionarios.map(item => ({
@@ -118,6 +119,7 @@ async function flush(snapshot) {
       nome: item.name, ativo: item.active !== false, cidade: item.city || '',
       qtd_min_domingo: Number(item.sunMin || 0), qtd_min_feriado: Number(item.holMin || 0),
       aberta_domingo: item.openSun !== false, aberta_feriado: item.openHol !== false,
+      uf: item.uf ?? 'PR', aberta_facultativo: item.openFac === true,
       qtd_fixos_escala: item.fixedMin ?? null
     }})),
     funcionarios: (snapshot.employees || []).map(item => ({ id: item.id, data: {
