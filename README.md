@@ -24,7 +24,9 @@ O painel é administrativo e não possui área de funcionários ou fluxo de soli
 - No cadastro da loja, escolha a **Cidade** (Colombo, Pinhais, São José dos Pinhais ou Curitiba). Se o nome da loja contiver a cidade, ela é reconhecida sozinha.
 - O calendário mostra em azul os feriados municipais das cidades que têm loja ativa, e o cartão “Feriados municipais” lista os do mês, o próximo e as lojas de cada cidade.
 - Datas fixas anuais (calendário oficial do TJPR 2026): Colombo 05/02, 26/05 e 07/10; Pinhais 20/03; São José dos Pinhais 08/01 e 19/03; Curitiba 08/09. Para outra cidade, edite `MUNICIPAL_HOLIDAYS` no `index.html`.
-- Por enquanto são informativos: não alteram a geração da escala.
+- O feriado municipal entra como data de feriado em **Funcionamento das lojas**, na **Disponibilidade** (coluna azul) e na **geração da escala**, valendo só para as lojas da cidade. As lojas de outras cidades ficam fechadas por padrão e os funcionários delas aparecem com “—” na Disponibilidade.
+- Se o feriado municipal cair num domingo, as lojas da cidade usam o mínimo de feriado e as demais seguem o de domingo.
+- Em Funcionamento das lojas é possível abrir outras lojas ou fechar todas nessa data, como nos demais feriados.
 
 ## Relatórios
 

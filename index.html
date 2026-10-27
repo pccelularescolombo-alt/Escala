@@ -110,6 +110,7 @@
     .op-date{flex:1;min-width:150px}.op-date b{display:block;font-size:13px}.op-date span{color:var(--muted);font-size:11px}
     .op-opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer}.op-opt input{margin-top:3px}.op-opt b{display:block;font-size:13px}.op-opt small{display:block;color:var(--muted);font-size:11px;margin-top:2px}.op-opt:has(input:checked){border-color:var(--green);background:#f4faf6}
     .event.closed{background:#ecece7;color:#59615c}
+    .legend .muni{background:#7aa3cf}.availability-table th.av-muni{background:#e4eef8!important;color:#315d8f}.av-na{color:var(--muted)}.av-chip.muni{border-color:#9bb7d6;background:#eef4fa}.av-chip.muni.on{background:#315d8f;border-color:#315d8f}
     .event.municipal{background:#dfeaf5;color:#315d8f}.event.municipal small{display:block;font-size:8px;font-weight:600;opacity:.85;text-transform:uppercase;letter-spacing:.4px;margin-top:1px}
     .mp-store{margin-bottom:12px}.mp-store-head{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 8px}.mp-store-head b{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted)}.mp-store .pill.warn{background:#fff0c9;color:#795c0e}.mp-store .mp-person{margin-bottom:8px}
     .mp-swap{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}.mp-swap>label{display:block;font-size:11px;font-weight:700;margin-bottom:7px}.mp-swap select{width:100%;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px;font-size:13px;color:var(--ink)}.mp-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
@@ -205,7 +206,7 @@
 
       <section class="page" id="page-calendar"><div class="page-head"><div><p class="eyebrow">Datas especiais</p><h1>Calendário</h1><p class="subtitle">Domingos e feriados do ano são carregados automaticamente. Facultativos aparecem no calendário, mas não entram na escala automática.</p></div></div><article class="card"><div class="card-head"><div><h2 class="card-title monthLabel">Outubro 2026</h2><p class="card-sub">Domingos e feriados cadastrados</p></div><div class="month-switcher"><button class="mini-btn prev-month" style="transform:rotate(180deg)"><svg><use href="#i-chevron"/></svg></button><button class="mini-btn next-month"><svg><use href="#i-chevron"/></svg></button></div></div><div class="card-body"><div class="calendar-grid" id="calendarGrid"></div></div></article><article class="card" style="margin-top:18px"><div class="card-head"><div><h2 class="card-title">Feriados municipais</h2><p class="card-sub" id="municipalNext"></p></div></div><div class="card-body"><div id="municipalList"></div></div></article><article class="card" style="margin-top:18px"><div class="card-head"><div><h2 class="card-title">Funcionamento das lojas</h2><p class="card-sub">Defina se as lojas abrem ou fecham em cada domingo e feriado de <span class="monthLabel"></span></p></div></div><div class="card-body"><div id="openingList"></div></div></article></section>
 
-      <section class="page" id="page-availability"><div class="page-head"><div><p class="eyebrow">Planejamento</p><h1>Disponibilidade</h1><p class="subtitle">Marque quem pode trabalhar em cada domingo ou feriado antes de gerar a escala.</p></div><div class="month-switcher"><button class="mini-btn prev-month" style="transform:rotate(180deg)"><svg><use href="#i-chevron"/></svg></button><strong class="monthLabel">Outubro 2026</strong><button class="mini-btn next-month"><svg><use href="#i-chevron"/></svg></button></div></div><div class="toolbar"><div class="legend"><span><i class="yes"></i>Disponível</span><span><i class="no"></i>Indisponível</span><span><i></i>Não informado</span></div><span class="subtitle" id="availabilitySummary"></span><button class="btn" id="clearAvailability">Limpar marcações do mês</button></div><div class="av-desktop" id="availabilityStores"></div><div class="av-mobile" id="availabilityMobile"></div></section>
+      <section class="page" id="page-availability"><div class="page-head"><div><p class="eyebrow">Planejamento</p><h1>Disponibilidade</h1><p class="subtitle">Marque quem pode trabalhar em cada domingo ou feriado antes de gerar a escala.</p></div><div class="month-switcher"><button class="mini-btn prev-month" style="transform:rotate(180deg)"><svg><use href="#i-chevron"/></svg></button><strong class="monthLabel">Outubro 2026</strong><button class="mini-btn next-month"><svg><use href="#i-chevron"/></svg></button></div></div><div class="toolbar"><div class="legend"><span><i class="yes"></i>Disponível</span><span><i class="no"></i>Indisponível</span><span><i></i>Não informado</span><span><i class="muni"></i>Feriado municipal</span></div><span class="subtitle" id="availabilitySummary"></span><button class="btn" id="clearAvailability">Limpar marcações do mês</button></div><div class="av-desktop" id="availabilityStores"></div><div class="av-mobile" id="availabilityMobile"></div></section>
 
       <section class="page" id="page-schedule"><div class="page-head"><div><p class="eyebrow">Operação mensal</p><h1>Escala <span class="monthLabel">Outubro 2026</span></h1><p class="subtitle">Distribuição por data e loja, considerando histórico e disponibilidade.</p></div><div class="button-row"><button class="btn" data-action="save-draft">Salvar rascunho</button><button class="btn accent" id="generateSchedule"><svg><use href="#i-grid"/></svg>Gerar automaticamente</button></div></div><div class="toolbar"><div class="month-switcher"><button class="mini-btn prev-month" style="transform:rotate(180deg)"><svg><use href="#i-chevron"/></svg></button><strong class="monthLabel">Outubro 2026</strong><button class="mini-btn next-month"><svg><use href="#i-chevron"/></svg></button></div><div class="button-row"><span class="pill pending status-line" id="scheduleStatus">Rascunho</span><button class="btn primary" data-action="publish"><svg><use href="#i-check"/></svg>Publicar</button></div></div><div id="scheduleBoard"></div></section>
 
@@ -282,20 +283,18 @@
     function generateSchedule(silent=false,opts={}){
       const allow=opts.allow||new Set();
       const year=viewDate.getFullYear(),month=viewDate.getMonth();
-      const dates=sundaysFor(year,month).map(d=>({date:`${year}-${String(month+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`,type:'DOMINGO'}));
-      state.holidays.filter(h=>h.category!=='Facultativo'&&h.date.startsWith(`${year}-${String(month+1).padStart(2,'0')}`)).forEach(h=>dates.push({date:h.date,type:'FERIADO'}));
-      dates.sort((a,b)=>a.date.localeCompare(b.date));
+      const dates=specialDatesFor(year,month);
       const monthKey=`${year}-${String(month+1).padStart(2,'0')}`;
       state.schedule=state.schedule.filter(x=>!x.date.startsWith(monthKey));
       const usage={},assignedByDate={};state.employees.forEach(e=>usage[e.id]=e.sundays||0);
       dates.forEach(special=>{
         const assignedToday=(assignedByDate[special.date]??=new Set()),dayRows=[],blocked=new Set();
-        if(special.type==='FERIADO'){
+        if(special.type==='FERIADO'||muniCities(special.date).length){
           const prevDate=[...new Set(state.schedule.filter(r=>r.type==='FERIADO'&&r.date<special.date).map(r=>r.date))].sort().pop();
           if(prevDate)state.schedule.filter(r=>r.type==='FERIADO'&&r.date===prevDate).forEach(r=>r.employees.forEach(id=>{if(!allow.has(id))blocked.add(id)}));
         }
         state.stores.filter(s=>s.active&&storeOpenOn(s,special.date,special.type)).forEach(store=>{
-          const count=special.type==='FERIADO'?store.holMin:store.sunMin;
+          const stype=effType(store,special.date,special.type),count=stype==='FERIADO'?store.holMin:store.sunMin;
           const fixedTarget=store.fixedMin==null?count:Math.min(Number(store.fixedMin)||0,count);
           const fixedPool=state.employees.filter(e=>e.active&&e.store===store.id&&!assignedToday.has(e.id)&&!blocked.has(e.id)&&state.availability[`${e.id}|${special.date}`]===true).sort((a,b)=>{
             const availableA=state.availability[`${a.id}|${special.date}`]===true?0:1,availableB=state.availability[`${b.id}|${special.date}`]===true?0:1;
@@ -303,7 +302,7 @@
           });
           const selected=fixedPool.slice(0,fixedTarget).map(person=>person.id);
           selected.forEach(id=>{assignedToday.add(id);usage[id]=(usage[id]||0)+1});
-          dayRows.push({id:crypto.randomUUID?.()||`${Date.now()}${Math.random()}`,date:special.date,type:special.type,store:store.id,employees:selected,origin:'AUTOMATICA',target:count});
+          dayRows.push({id:crypto.randomUUID?.()||`${Date.now()}${Math.random()}`,date:special.date,type:stype,store:store.id,employees:selected,origin:'AUTOMATICA',target:count});
         });
         const fill=filter=>dayRows.forEach(row=>{
           const missing=row.target-row.employees.length;if(missing<=0)return;
@@ -337,7 +336,7 @@
       const o=state.openings?.[date];
       if(o?.mode==='closed')return false;
       if(o?.mode==='open')return (o.stores||[]).includes(store.id);
-      return isOpenFor(store,type);
+      return storeDefaultOpen(store,date,type);
     }
     const isOpenFor=(store,type)=>type==='FERIADO'?store.openHol!==false:store.openSun!==false;
     function syncStoreOpenFields(){
@@ -415,6 +414,14 @@
       return out.sort((a,b)=>a.date.localeCompare(b.date)||a.city.localeCompare(b.city));
     }
     const weekdayName=iso=>['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'][new Date(Number(iso.slice(0,4)),Number(iso.slice(5,7))-1,Number(iso.slice(8,10))).getDay()];
+    const muniCities=date=>[...new Set(municipalOn(date).map(h=>h.city))];
+    const dayOfWeekIso=iso=>new Date(Number(iso.slice(0,4)),Number(iso.slice(5,7))-1,Number(iso.slice(8,10))).getDay();
+    function muniOnly(date){return municipalOn(date).length>0&&!state.holidays.some(h=>h.date===date&&h.category!=='Facultativo')&&dayOfWeekIso(date)!==0}
+    const storeMuni=(store,date)=>municipalOn(date).some(h=>h.city===cityOf(store));
+    const effType=(store,date,type)=>type==='DOMINGO'&&storeMuni(store,date)?'FERIADO':type;
+    function storeDefaultOpen(store,date,type){if(muniOnly(date)&&!storeMuni(store,date))return false;return isOpenFor(store,effType(store,date,type))}
+    function relevantFor(emp,date){if(!muniOnly(date))return true;const st=storeById(emp.store);return !!st&&storeMuni(st,date)}
+    function holidayName(d){const g=state.holidays.find(h=>h.date===d)?.name,mu=municipalOn(d).map(h=>`${h.name.split(' (')[0]} (${h.city})`);return [g,...mu].filter(Boolean).join(' + ')||'Feriado'}
     function renderMunicipal(){
       const y=viewDate.getFullYear(),m=viewDate.getMonth(),mk=`${y}-${String(m+1).padStart(2,'0')}`,today=new Date(),todayIso=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
       const cities=[...new Set(state.stores.filter(x=>x.active).map(cityOf).filter(Boolean))],host=document.querySelector('#municipalList'),next=document.querySelector('#municipalNext');
@@ -435,6 +442,7 @@
       const y=viewDate.getFullYear(),m=viewDate.getMonth(),map=new Map();
       sundaysFor(y,m).forEach(d=>{const iso=`${y}-${String(m+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;map.set(iso,{date:iso,type:'Domingo'})});
       state.holidays.filter(h=>h.date.startsWith(`${y}-${String(m+1).padStart(2,'0')}`)).forEach(h=>map.set(h.date,{date:h.date,type:h.name}));
+      for(let dd=1;dd<=new Date(y,m+1,0).getDate();dd++){const iso=`${y}-${String(m+1).padStart(2,'0')}-${String(dd).padStart(2,'0')}`,cs=muniCities(iso);if(!cs.length)continue;const ex=map.get(iso);if(ex)ex.muni=cs;else map.set(iso,{date:iso,type:'Feriado municipal',muni:cs})}
       return [...map.values()].sort((a,b)=>a.date.localeCompare(b.date));
     }
     let availDate='';
@@ -446,17 +454,18 @@
       if(orphan.length)groups.push({store:null,key:'__none',name:'Sem loja fixa',emps:orphan});
       return groups;
     }
-    function avStatus(emps,dates){let done=0;emps.forEach(e=>dates.forEach(d=>{if(state.availability[`${e.id}|${d.date}`]!==undefined)done++}));return {total:emps.length*dates.length,done}}
+    const avLabel=d=>d.muni?(muniOnly(d.date)?`Municipal · ${d.muni.join(', ')}`:`${d.type} + municipal`):d.type;
+    function avStatus(emps,dates){let done=0,total=0;emps.forEach(e=>dates.forEach(d=>{if(!relevantFor(e,d.date))return;total++;if(state.availability[`${e.id}|${d.date}`]!==undefined)done++}));return {total,done}}
     const avPill=st=>!st.total?'<span class="pill gray">Sem funcionários</span>':st.done===st.total?'<span class="pill">✓ Todos informados</span>':`<span class="pill warn">${st.done}/${st.total} informados</span>`;
     function renderAvailabilityMobile(dates,groups){
       const host=document.querySelector('#availabilityMobile');
       if(!dates.length){host.innerHTML='';return}
       if(!dates.some(d=>d.date===availDate))availDate=dates[0].date;
-      const cur=dates.find(d=>d.date===availDate),label=d=>d.type==='Domingo'?'Domingo':d.type;
-      host.innerHTML=`<div class="av-chips">${dates.map(d=>`<button type="button" class="av-chip ${d.date===availDate?'on':''}" data-av-chip="${d.date}"><b>${d.date.slice(-2)}/${d.date.slice(5,7)}</b><small>${esc(label(d))}</small></button>`).join('')}</div>
-      <p class="subtitle" style="margin:0 0 12px"><b>${esc(label(cur))} · ${fmtDate(cur.date).slice(0,5)}</b> — confira cada loja abaixo.</p>
-      ${groups.map(g=>{const st=avStatus(g.emps,[cur]);return `<article class="card" style="margin-bottom:14px"><div class="card-head"><div><h2 class="card-title">${esc(g.name)}</h2><p class="card-sub">${g.emps.length} funcionário(s)</p></div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end">${avPill(st)}${g.emps.length?`<button type="button" class="btn small" data-av-all="${cur.date}|${esc(g.key)}">Todos disponíveis</button>`:''}</div></div>
-      <div class="av-list">${g.emps.length?g.emps.map((e,i)=>{const v=state.availability[`${e.id}|${availDate}`],k=`${esc(e.id)}|${availDate}`;return `<div class="av-item"><div class="person-cell"><span class="person-avatar" style="background:${colors[i%colors.length]}20;color:${colors[i%colors.length]}">${esc(initials(e.name))}</span><span><b>${esc(e.name)}</b><small>${esc(e.role||'')}</small></span></div><div class="av-seg"><button type="button" class="yes ${v===true?'on':''}" data-av-set="${k}|yes">Disponível</button><button type="button" class="no ${v===false?'on':''}" data-av-set="${k}|no">Indisponível</button><button type="button" class="clear ${v===undefined?'on':''}" data-av-set="${k}|clear">Não informado</button></div></div>`}).join(''):'<div class="mp-empty" style="margin:16px">Nenhum funcionário fixo nesta loja.</div>'}</div></article>`}).join('')||'<div class="mp-empty">Nenhum funcionário ativo cadastrado.</div>'}`;
+      const cur=dates.find(d=>d.date===availDate),label=avLabel;
+      host.innerHTML=`<div class="av-chips">${dates.map(d=>`<button type="button" class="av-chip ${d.date===availDate?'on':''} ${d.muni?'muni':''}" data-av-chip="${d.date}"><b>${d.date.slice(-2)}/${d.date.slice(5,7)}</b><small>${esc(label(d))}</small></button>`).join('')}</div>
+      <p class="subtitle" style="margin:0 0 12px"><b>${esc(label(cur))} · ${fmtDate(cur.date).slice(0,5)}</b> — ${cur.muni?(muniOnly(cur.date)?`feriado municipal em ${esc(cur.muni.join(', '))}: informe a disponibilidade dos funcionários das lojas dessa cidade.`:`inclui feriado municipal em ${esc(cur.muni.join(', '))}; nessas lojas conta como horário de feriado.`):'confira cada loja abaixo.'}</p>
+      ${groups.map(g=>{const st=avStatus(g.emps,[cur]),rel=g.emps.filter(e=>relevantFor(e,cur.date)),closedMuni=g.emps.length>0&&!rel.length;return `<article class="card" style="margin-bottom:14px"><div class="card-head"><div><h2 class="card-title">${esc(g.name)}</h2><p class="card-sub">${g.emps.length} funcionário(s)</p></div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end">${closedMuni?'<span class="pill gray">Fechada neste feriado</span>':avPill(st)}${rel.length?`<button type="button" class="btn small" data-av-all="${cur.date}|${esc(g.key)}">Todos disponíveis</button>`:''}</div></div>
+      <div class="av-list">${closedMuni?'<div class="mp-empty" style="margin:16px">Loja de outra cidade: não abre neste feriado municipal.</div>':rel.length?rel.map((e,i)=>{const v=state.availability[`${e.id}|${availDate}`],k=`${esc(e.id)}|${availDate}`;return `<div class="av-item"><div class="person-cell"><span class="person-avatar" style="background:${colors[i%colors.length]}20;color:${colors[i%colors.length]}">${esc(initials(e.name))}</span><span><b>${esc(e.name)}</b><small>${esc(e.role||'')}</small></span></div><div class="av-seg"><button type="button" class="yes ${v===true?'on':''}" data-av-set="${k}|yes">Disponível</button><button type="button" class="no ${v===false?'on':''}" data-av-set="${k}|no">Indisponível</button><button type="button" class="clear ${v===undefined?'on':''}" data-av-set="${k}|clear">Não informado</button></div></div>`}).join(''):'<div class="mp-empty" style="margin:16px">Nenhum funcionário fixo nesta loja.</div>'}</div></article>`}).join('')||'<div class="mp-empty">Nenhum funcionário ativo cadastrado.</div>'}`;
     }
     function renderAvailability(){
       const dates=specialDates(),groups=availabilityGroups();
@@ -464,7 +473,7 @@
       document.querySelector('#availabilitySummary').textContent=withPeople.length?`${complete} de ${withPeople.length} lojas com tudo informado`:'';
       document.querySelector('#availabilityStores').innerHTML=groups.map(g=>{
         const st=avStatus(g.emps,dates);
-        return `<article class="card av-store" style="margin-bottom:16px"><div class="card-head"><div><h2 class="card-title">${esc(g.name)}</h2><p class="card-sub">${g.emps.length} funcionário(s)</p></div>${avPill(st)}</div>${g.emps.length?`<div class="table-wrap"><table class="availability-table"><thead><tr><th>Funcionário</th>${dates.map(d=>`<th>${d.date.slice(-2)}/${d.date.slice(5,7)}<br><small>${esc(d.type)}</small></th>`).join('')}</tr></thead><tbody>${g.emps.map((e,i)=>`<tr><td><div class="person-cell"><span class="person-avatar" style="background:${colors[i%colors.length]}20;color:${colors[i%colors.length]}">${esc(initials(e.name))}</span><span><b>${esc(e.name)}</b><small>${esc(e.role||'')}</small></span></div></td>${dates.map(d=>{const v=state.availability[`${e.id}|${d.date}`];return `<td><button class="availability-toggle ${v===true?'yes':v===false?'no':''}" data-availability="${esc(e.id)}|${d.date}">${v===true?'Disponível':v===false?'Indisponível':'Não informado'}</button></td>`}).join('')}</tr>`).join('')}</tbody></table></div>`:'<div class="mp-empty" style="margin:16px">Nenhum funcionário fixo nesta loja.</div>'}</article>`}).join('')||'<article class="card empty"><h3>Nenhum funcionário ativo</h3></article>';
+        return `<article class="card av-store" style="margin-bottom:16px"><div class="card-head"><div><h2 class="card-title">${esc(g.name)}</h2><p class="card-sub">${g.emps.length} funcionário(s)</p></div>${avPill(st)}</div>${g.emps.length?`<div class="table-wrap"><table class="availability-table"><thead><tr><th>Funcionário</th>${dates.map(d=>`<th class="${d.muni?'av-muni':''}">${d.date.slice(-2)}/${d.date.slice(5,7)}<br><small>${esc(avLabel(d))}</small></th>`).join('')}</tr></thead><tbody>${g.emps.map((e,i)=>`<tr><td><div class="person-cell"><span class="person-avatar" style="background:${colors[i%colors.length]}20;color:${colors[i%colors.length]}">${esc(initials(e.name))}</span><span><b>${esc(e.name)}</b><small>${esc(e.role||'')}</small></span></div></td>${dates.map(d=>{if(!relevantFor(e,d.date))return '<td><span class="av-na" title="Loja de outra cidade: fechada neste feriado municipal">—</span></td>';const v=state.availability[`${e.id}|${d.date}`];return `<td><button class="availability-toggle ${v===true?'yes':v===false?'no':''}" data-availability="${esc(e.id)}|${d.date}">${v===true?'Disponível':v===false?'Indisponível':'Não informado'}</button></td>`}).join('')}</tr>`).join('')}</tbody></table></div>`:'<div class="mp-empty" style="margin:16px">Nenhum funcionário fixo nesta loja.</div>'}</article>`}).join('')||'<article class="card empty"><h3>Nenhum funcionário ativo</h3></article>';
       renderAvailabilityMobile(dates,groups);
     }
     function renderSchedule(){
@@ -509,7 +518,7 @@
       }
       if(type==='holidays'){
         const hrows=state.schedule.filter(r=>r.type==='FERIADO'),dates=[...new Set(hrows.map(r=>r.date))].sort();
-        const nameOf=d=>state.holidays.find(h=>h.date===d)?.name||'Feriado';
+        const nameOf=d=>holidayName(d);
         const teamOf=d=>hrows.filter(r=>r.date===d).map(r=>({store:storeById(r.store)?.name||'Loja',ids:r.employees.filter(id=>employeeById(id))}));
         const lines=d=>teamOf(d).map(t=>`<div class="report-line"><b>${esc(t.store)}</b><span>${t.ids.map(id=>esc(employeeById(id).name)).join(', ')||'Sem equipe'}</span></div>`).join('')||'<p class="subtitle">Sem equipe registrada.</p>';
         sections=dates.length?[...dates].reverse().map(d=>{
@@ -520,21 +529,22 @@
     }
     document.querySelector('#reportContent').addEventListener('change',e=>{if(e.target.id==='reportStoreSelect'){reportStore=e.target.value;buildReport('store',true)}});
     function renderOpenings(){
-      const y=viewDate.getFullYear(),m=viewDate.getMonth(),active=state.stores.filter(x=>x.active),holName=d=>state.holidays.find(h=>h.date===d)?.name;
+      const y=viewDate.getFullYear(),m=viewDate.getMonth(),active=state.stores.filter(x=>x.active),holName=d=>state.holidays.find(h=>h.date===d)?.name;const storeNames=(d,t)=>active.filter(x=>storeOpenOn(x,d,t)).map(x=>x.name).join(', ')||'nenhuma';
       document.querySelector('#openingList').innerHTML=specialDatesFor(y,m).map(d=>{
         const o=state.openings[d.date],n=active.filter(x=>storeOpenOn(x,d.date,d.type)).length,total=active.length;
-        const label=d.type==='FERIADO'?(holName(d.date)||'Feriado'):(holName(d.date)?`Domingo · ${holName(d.date)}`:'Domingo');
+        const mu=d.muni||[],isMuniOnly=muniOnly(d.date);
+        const label=isMuniOnly?`Feriado municipal · ${mu.join(', ')} — ${municipalOn(d.date).map(h=>h.name).join(' + ')}`:d.type==='FERIADO'?holidayName(d.date):(holName(d.date)||mu.length?`Domingo · ${holidayName(d.date)}`:'Domingo');
         const pill=o?.mode==='closed'?'<span class="pill holiday">Todas fechadas</span>':o?.mode==='open'?`<span class="pill">${n} de ${total} abertas</span>`:`<span class="pill gray">Padrão · ${n} de ${total} abertas</span>`;
-        return `<div class="op-row"><div class="op-date"><b>${fmtDate(d.date).slice(0,5)}</b><span>${esc(label)}</span></div>${pill}<button type="button" class="btn small" data-opening="${d.date}">Definir</button></div>`}).join('')||'<p class="subtitle">Nenhum domingo ou feriado neste mês.</p>';
+        return `<div class="op-row"><div class="op-date"><b>${fmtDate(d.date).slice(0,5)}${mu.length?' <span class="pill blue">Municipal</span>':''}</b><span>${esc(label)}</span>${mu.length?`<span style="display:block;margin-top:2px">Abrem: ${esc(storeNames(d.date,d.type))}</span>`:''}</div>${pill}<button type="button" class="btn small" data-opening="${d.date}">Definir</button></div>`}).join('')||'<p class="subtitle">Nenhum domingo ou feriado neste mês.</p>';
     }
     function syncOpeningBox(){const mode=document.querySelector('#openingForm input[name=mode]:checked')?.value;document.querySelector('#openingStoresBox').style.display=mode==='open'?'':'none'}
     function openOpeningDialog(date){
       const type=specialDatesFor(Number(date.slice(0,4)),Number(date.slice(5,7))-1).find(x=>x.date===date)?.type||'DOMINGO',o=state.openings[date]||{mode:'default'};
       document.querySelector('#openingDate').value=date;
       document.querySelector('#openingTitle').textContent=`Funcionamento · ${fmtDate(date)}`;
-      document.querySelector('#openingSub').textContent=type==='FERIADO'?(state.holidays.find(h=>h.date===date)?.name||'Feriado'):'Domingo';
+      document.querySelector('#openingSub').textContent=type==='FERIADO'?holidayName(date)+(muniOnly(date)?' · só as lojas dessa cidade abrem por padrão':''):(muniCities(date).length?`Domingo · ${holidayName(date)}`:'Domingo');
       document.querySelectorAll('#openingForm input[name=mode]').forEach(r=>r.checked=r.value===o.mode);
-      document.querySelector('#openingStores').innerHTML=state.stores.filter(x=>x.active).map(x=>`<label class="check-person"><input type="checkbox" name="stores" value="${esc(x.id)}" ${(o.mode==='open'?(o.stores||[]).includes(x.id):isOpenFor(x,type))?'checked':''}><b>${esc(x.name)}</b></label>`).join('')||'<p class="subtitle" style="padding:8px">Nenhuma loja ativa cadastrada.</p>';
+      document.querySelector('#openingStores').innerHTML=state.stores.filter(x=>x.active).map(x=>`<label class="check-person"><input type="checkbox" name="stores" value="${esc(x.id)}" ${(o.mode==='open'?(o.stores||[]).includes(x.id):storeDefaultOpen(x,date,type))?'checked':''}><b>${esc(x.name)}</b></label>`).join('')||'<p class="subtitle" style="padding:8px">Nenhuma loja ativa cadastrada.</p>';
       syncOpeningBox();document.querySelector('#openingDialog').showModal();
     }
     document.querySelector('#openingForm').addEventListener('change',syncOpeningBox);
@@ -563,7 +573,7 @@
       const opBtn=e.target.closest('[data-opening]');if(opBtn)openOpeningDialog(opBtn.dataset.opening);
       const chip=e.target.closest('[data-av-chip]');if(chip){availDate=chip.dataset.avChip;renderAvailability()}
       const avSet=e.target.closest('[data-av-set]');if(avSet){const [emp,date,val]=avSet.dataset.avSet.split('|'),k=`${emp}|${date}`;if(val==='yes')state.availability[k]=true;else if(val==='no')state.availability[k]=false;else delete state.availability[k];Repository.save(state);renderAvailability()}
-      const avAll=e.target.closest('[data-av-all]');if(avAll){const [date,sk]=avAll.dataset.avAll.split('|'),grp=availabilityGroups().find(g=>g.key===sk);if(grp){grp.emps.forEach(x=>{state.availability[`${x.id}|${date}`]=true});Repository.save(state);renderAvailability();toast(`${grp.name}: todos disponíveis nesta data.`)}}
+      const avAll=e.target.closest('[data-av-all]');if(avAll){const [date,sk]=avAll.dataset.avAll.split('|'),grp=availabilityGroups().find(g=>g.key===sk);if(grp){grp.emps.filter(x=>relevantFor(x,date)).forEach(x=>{state.availability[`${x.id}|${date}`]=true});Repository.save(state);renderAvailability();toast(`${grp.name}: todos disponíveis nesta data.`)}}
       const availability=e.target.closest('[data-availability]');if(availability){const key=availability.dataset.availability,current=state.availability[key];if(current===undefined)state.availability[key]=true;else if(current===true)state.availability[key]=false;else delete state.availability[key];Repository.save(state);renderAvailability()}
       const manual=e.target.closest('[data-manual-date]');if(manual)openManual(manual.dataset.manualDate);
       const report=e.target.closest('[data-report]');if(report)buildReport(report.dataset.report);
@@ -574,7 +584,7 @@
     document.querySelectorAll('.next-month').forEach(b=>b.addEventListener('click',()=>{viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()+1,1);syncHolidays(viewDate.getFullYear());setMonthLabel();renderCalendar();renderAvailability();renderSchedule();renderDashboard()}));
     function pendingAvailability(){
       const dates=specialDatesFor(viewDate.getFullYear(),viewDate.getMonth()).filter(d=>state.stores.some(st=>st.active&&storeOpenOn(st,d.date,d.type)));
-      return state.employees.filter(e=>e.active&&dates.some(d=>state.availability[`${e.id}|${d.date}`]===undefined));
+      return state.employees.filter(e=>e.active&&dates.some(d=>relevantFor(e,d.date)&&state.availability[`${e.id}|${d.date}`]===undefined));
     }
     document.querySelector('#generateSchedule').addEventListener('click',()=>{
       const pend=pendingAvailability();
@@ -594,7 +604,7 @@
       return ids.length?{holiday:first.date,prev,ids}:null;
     }
     function openHolidayRepeat(c){
-      const nameOf=d=>state.holidays.find(h=>h.date===d)?.name||'Feriado';
+      const nameOf=d=>holidayName(d);
       document.querySelector('#hrTitle').textContent=`Trabalharam em ${fmtDate(c.prev).slice(0,5)} · ${nameOf(c.prev)}`;
       document.querySelector('#hrText').textContent=`Estes funcionários trabalharam no feriado anterior. Por padrão eles ficam fora da escala do feriado de ${fmtDate(c.holiday).slice(0,5)} (${nameOf(c.holiday)}), mas é opcional: marque quem você quer permitir na escala.`;
       document.querySelector('#hrList').innerHTML=c.ids.map(id=>{const e=employeeById(id);return `<label class="check-person"><input type="checkbox" value="${esc(id)}"><b>${esc(e.name)}</b><small style="color:var(--muted);margin-left:auto">${esc(storeById(e.store)?.name||'Sem loja')}</small></label>`}).join('');
@@ -617,6 +627,7 @@
       const key=`${year}-${String(month+1).padStart(2,'0')}`;
       const out=sundaysFor(year,month).map(d=>({date:`${key}-${String(d.getDate()).padStart(2,'0')}`,type:'DOMINGO'}));
       state.holidays.filter(h=>h.category!=='Facultativo'&&h.date.startsWith(key)).forEach(h=>{if(!out.some(o=>o.date===h.date))out.push({date:h.date,type:'FERIADO'})});
+      for(let dd=1;dd<=new Date(year,month+1,0).getDate();dd++){const iso=`${key}-${String(dd).padStart(2,'0')}`,cs=muniCities(iso);if(!cs.length)continue;const ex=out.find(o=>o.date===iso);if(ex)ex.muni=cs;else out.push({date:iso,type:'FERIADO',muni:cs})}
       return out.sort((a,b)=>a.date.localeCompare(b.date));
     }
     // ===== Ajuste manual por data (substituição / troca) =====
